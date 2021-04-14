@@ -18,7 +18,7 @@ MyString::MyString(const char* s)
 		strcpy(str, s);
 	}
 	else
-		str = nullptr;
+		str = NULL;
 }
 //copy ctor 
 MyString::MyString(const MyString& ms)
@@ -30,7 +30,7 @@ MyString::MyString(const MyString& ms)
 		strcpy(str, ms.str);
 	}
 	else
-		str = nullptr;
+		str = NULL;
 }
 
 char* MyString::getString() const
@@ -46,7 +46,7 @@ void MyString::setString(const char* s)
 		str = new char[len];
 		strcpy(str, s);
 	}
-	else str = nullptr;
+	else str = NULL;
 }
 int MyString::getLen()const
 {
@@ -65,7 +65,7 @@ MyString& MyString::operator=(const MyString& ms)
 		strcpy(str, ms.str);
 	}
 	else
-		str = nullptr;
+		str = NULL;
 	return *this;
 }
 
@@ -107,7 +107,7 @@ void MyString::print() const
 {
 	if (str) cout << str << endl;
 }
-bool MyString::operator >( char* _str)
+bool MyString::operator >( char* _str)	// Change to object
 {
 	bool flagthis = false;
 	bool flagStr = false;
@@ -138,7 +138,7 @@ bool MyString::operator >( char* _str)
 		_str[0] -= 32;//remove the change
 	return false;
 }
-bool MyString::operator <( char* _str)
+bool MyString::operator <( char* _str)	// Change to object
 {
 	bool flagStr = false;
 	bool flag = false;
@@ -168,7 +168,7 @@ bool MyString::operator <( char* _str)
 		_str[0] -= 32;//remove the change
 	return false;
 }
-bool MyString::operator <=( char* _str)
+bool MyString::operator <=( char* _str)// Change to object
 {
 	bool flagStr = false;
 	bool flag = false;
@@ -199,7 +199,7 @@ bool MyString::operator <=( char* _str)
 		_str[0] -= 32;//remove the change
 	return false;
 }
-bool MyString::operator >=( char* _str)
+bool MyString::operator >=( char* _str)// Change to object
 {
 	bool flagStr = false;
 	bool flag = false;
@@ -236,8 +236,8 @@ char& MyString::operator[](int index)
 MyString MyString::insert(int index, const char* s)
 {//I didnt use str functions because it gave me errors on the moodle (i dont know why)
 	MyString newStr;
-	newStr.len = strlen(s) + strlen(str) + 1;
-	newStr.str = new char[newStr.len];
+	newStr.len = strlen(s) + strlen(str);
+	newStr.str = new char[newStr.len+1];
 	
 	//the first word up to index
 	for (int i = 0; i < index; i++)
@@ -254,7 +254,7 @@ MyString MyString::insert(int index, const char* s)
 	{
 		newStr.str[i] = str[index+j];
 	}
-	newStr.str[newStr.len] = NULL;
+	newStr.str[newStr.len] = '\0';
 	newStr.print();
 	return newStr;
 }
