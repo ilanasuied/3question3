@@ -32,7 +32,7 @@ int main()
 		cout << "a<b\n";
 	}
 
-	if (n > strlen(str))//if the index is bigger then the len of the word
+	if (n > strlen(str) || n<0)//if the index is bigger then the len of the word
 	{
 		cout << "ERROR\n";
 		char ch;
@@ -43,7 +43,7 @@ int main()
 	MyString newOne=b.insert(n,a.getString());
 	int index; char ch;
 	cin >> ch >> index;
-	if (index >= newOne.getLen())
+	if (index >= newOne.getLen() || n<0)
 		cout << "ERROR";
 	else
 	{
