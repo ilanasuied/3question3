@@ -6,10 +6,10 @@
 class MyString
 {
 private:
-    int len = 0;
+    int len;
     char* str;
 public:
-    MyString() : str(nullptr), len(0) {} //explicit empty constructor
+    MyString() : str(NULL), len(0) {} //explicit empty constructor
     MyString(const char* s); //constructor
     MyString(const MyString& ms); //copy constructor
     char* getString() const;
@@ -23,6 +23,7 @@ public:
     bool operator==(const MyString& ms) const;
     char& operator[](int index);
     bool operator >( char* str);
+    //bool operator>(const MyString&);  // This is right!!!
     bool operator <( char* str);
     bool operator <=( char* str);
     bool operator >=( char* str);
